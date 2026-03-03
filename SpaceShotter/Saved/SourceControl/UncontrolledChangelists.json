@@ -1,0 +1,30 @@
+{
+	"version": 1,
+	"changelists": [
+		{
+			"guid": "00000000000000000000000000000000",
+			"description": "Default Uncontrolled Changelist",
+			"files": [
+				"C:/Users/daniel.minarrobernar/Downloads/01_SpaceShotter/SpaceShotter/Content/Blueprints/Player/BP_SS_PlayerAmmo.uasset",
+				"C:/Users/daniel.minarrobernar/Downloads/01_SpaceShotter/SpaceShotter/Content/Blueprints/Player/BP_SS_PlayerCharacter.uasset",
+				"C:/Users/daniel.minarrobernar/Downloads/01_SpaceShotter/SpaceShotter/Content/Blueprints/Enemy/BP_SS_EnemyBase.uasset",
+				"C:/Users/daniel.minarrobernar/Downloads/01_SpaceShotter/SpaceShotter/Content/Maps/Level1.umap",
+				"C:/Users/daniel.minarrobernar/Downloads/01_SpaceShotter/SpaceShotter/Content/Blueprints/Player/BP_SS_EnemyAmmo.uasset",
+				"C:/Users/daniel.minarrobernar/Downloads/01_SpaceShotter/SpaceShotter/Content/Blueprints/Enemy/BP_SS_EnemyAmmo.uasset",
+				"C:/Users/daniel.minarrobernar/Downloads/01_SpaceShotter/SpaceShotter/Content/Blueprints/BP_KillActor.uasset",
+				"C:/Users/daniel.minarrobernar/Desktop/ProgAvanzada/SpaceShotter/Content/Blueprints/BP_MyCharacter.uasset",
+				"C:/Users/daniel.minarrobernar/Desktop/ProgAvanzada/SpaceShotter/Content/NewMap.umap",
+				"C:/Users/daniel.minarrobernar/Desktop/ProgAvanzada/SpaceShotter/Content/Level1.umap",
+				"C:/Users/daniel.minarrobernar/Desktop/ProgAvanzada/SpaceShotter/Content/Maps/Level1.umap",
+				"C:/Users/daniel.minarrobernar/Desktop/ProgAvanzada/SpaceShotter/Content/Blueprints/Player/BP_MyCharacter.uasset",
+				"C:/Users/daniel.minarrobernar/Desktop/ProgAvanzada/SpaceShotter/Content/Blueprints/Player/BP_SS_PlayerCharacter.uasset",
+				"C:/Users/daniel.minarrobernar/Desktop/ProgAvanzada/SpaceShotter/Content/Blueprints/BP_SS_GameMode.uasset",
+				"C:/Users/daniel.minarrobernar/Desktop/ProgAvanzada/SpaceShotter/Content/Blueprints/System/BP_SS_GameMode.uasset",
+				"C:/Users/daniel.minarrobernar/Desktop/ProgAvanzada/SpaceShotter/Content/Blueprints/Input/IA_Move.uasset",
+				"C:/Users/daniel.minarrobernar/Desktop/ProgAvanzada/SpaceShotter/Content/Blueprints/Input/IMC_SS_Mapping.uasset",
+				"C:/Users/daniel.minarrobernar/Desktop/ProgAvanzada/SpaceShotter/Content/Blueprints/Input/IA_Shoot.uasset",
+				"C:/Users/daniel.minarrobernar/Desktop/ProgAvanzada/SpaceShotter/Content/Blueprints/Player/BP_SS_PlayerAmmo.uasset"
+			]
+		}
+	]
+}
