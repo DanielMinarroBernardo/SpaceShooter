@@ -17,8 +17,8 @@ public:
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	UStaticMeshComponent* ShipMesh;
 
-	//UPROPERTY(EditAnywhere,BlueprintReadWrite)
-	//USceneComponent* FirePoint;
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	USceneComponent* FirePoint;
 
 protected:
 	// Called when the game starts or when spawned

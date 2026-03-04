@@ -8,9 +8,12 @@ ASS_PlayerShipCharacter::ASS_PlayerShipCharacter()
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	
 	ShipMesh = CreateDefaultSubobject<UStaticMeshComponent>((TEXT("ShipMesh")));
 	ShipMesh->SetupAttachment(GetMesh());
-	//FirePoint = CreateDefaultSubobject<USceneComponent>((TEXT("FirePoint")));
+	
+	FirePoint = CreateDefaultSubobject<USceneComponent>((TEXT("FirePoint")));
+	FirePoint->SetupAttachment(RootComponent);
 }
 
 // Called when the game starts or when spawned
