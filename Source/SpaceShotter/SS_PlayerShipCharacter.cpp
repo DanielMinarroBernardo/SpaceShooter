@@ -4,6 +4,7 @@
 #include "SS_PlayerShipCharacter.h"
 #include "Components/CapsuleComponent.h"
 #include "EnhancedInputComponent.h"
+#include "SS_PlayerProjectile.h"
 #include "InputAction.h"
 #include "InputActionValue.h"
 
@@ -42,6 +43,24 @@ void ASS_PlayerShipCharacter::Move(const FInputActionValue& Value)
 
 }
 
+void ASS_PlayerShipCharacter::Shoot()
+{
+	if (bCanFire) {
+		//TODO: Spawn actor
+		GEngine->AddOnScreenDebugMessage(-1, 1.0, FColor::Red, "Shooting");	
+		//GetWorld()->SpawnActor(,)
+		bCanFire = false;
+		//INIT TIMER
+		GetWorldTimerManager().SetTimer(FireTimerHandle, this, &ASS_PlayerShipCharacter::SetCanFireTrue, FireDelay, false);
+	}
+}
+
+void ASS_PlayerShipCharacter::SetCanFireTrue()
+{
+	bCanFire = true;
+}
+
+
 // Called every frame
 void ASS_PlayerShipCharacter::Tick(float DeltaTime)
 {
@@ -59,6 +78,7 @@ void ASS_PlayerShipCharacter::SetupPlayerInputComponent(UInputComponent* PlayerI
 		if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerInputComponent)) {
 			
 			EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ASS_PlayerShipCharacter::Move);
+			EnhancedInputComponent->BindAction(ShootAction, ETriggerEvent::Triggered, this, &ASS_PlayerShipCharacter::Shoot);
 
 		}
 		
