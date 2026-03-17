@@ -23,10 +23,10 @@ public:
 	UStaticMeshComponent* Mesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bullet")
-	float LifeSpan;
+	float LifeSpan = 20;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bullet")
-	float BulletSpeed;
+	float BulletSpeed = 600;
 
 protected:
 	// Called when the game starts or when spawned

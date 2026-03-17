@@ -46,9 +46,14 @@ void ASS_PlayerShipCharacter::Move(const FInputActionValue& Value)
 void ASS_PlayerShipCharacter::Shoot()
 {
 	if (bCanFire) {
-		//TODO: Spawn actor
 		GEngine->AddOnScreenDebugMessage(-1, 1.0, FColor::Red, "Shooting");	
-		//GetWorld()->SpawnActor(,)
+		
+		//Spawn
+		FActorSpawnParameters SpawnParams;
+		SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+		
+		GetWorld()->SpawnActor<AActor>(ProjectileClass, FirePoint->GetComponentTransform(), SpawnParams);
+
 		bCanFire = false;
 		//INIT TIMER
 		GetWorldTimerManager().SetTimer(FireTimerHandle, this, &ASS_PlayerShipCharacter::SetCanFireTrue, FireDelay, false);

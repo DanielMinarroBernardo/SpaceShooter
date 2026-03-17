@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include "SS_PlayerProjectile.h"
 #include "SS_PlayerShipCharacter.generated.h"
 
 class UInputAction;

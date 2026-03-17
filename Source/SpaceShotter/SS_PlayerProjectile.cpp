@@ -22,7 +22,8 @@ ASS_PlayerProjectile::ASS_PlayerProjectile()
 void ASS_PlayerProjectile::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	SetLifeSpan(LifeSpan);
+	GEngine->AddOnScreenDebugMessage(-1, 1.0, FColor::Red, "SpawnActor");
 }
 
 // Called every frame
@@ -30,6 +31,6 @@ void ASS_PlayerProjectile::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	SetActorLocation(((DeltaTime * BulletSpeed) * GetActorForwardVector()) + GetActorLocation(), false, nullptr, ETeleportType::None);
-
+	
 }
 
