@@ -18,11 +18,20 @@ ASS_PlayerProjectile::ASS_PlayerProjectile()
 	Mesh->SetupAttachment(Capsule);
 }
 
+void ASS_PlayerProjectile::BeginOverlap(AActor* OverlappedActor,AActor*OtherActor){
+	if (OtherActor - ActorHasTag(WallTag)) {
+		GEngine->AddOnScreenDebugMessage(-1, 1.0, FColor::Red, "Player Bullet Hitting a Wall");
+		Destroy();
+	}
+}
 // Called when the game starts or when spawned
 void ASS_PlayerProjectile::BeginPlay()
 {
 	Super::BeginPlay();
 	SetLifeSpan(LifeSpan);
+	//-----------------------------------------------------------------------------------------------------
+	OnActorBeginOverlap.AddUniqueDynamic(this, &ASS_PlayerProjectile::BeginOverlap);
+	//-----------------------------------------------------------------------------------------------------
 	GEngine->AddOnScreenDebugMessage(-1, 1.0, FColor::Red, "SpawnActor");
 }
 

@@ -13,8 +13,8 @@ class SPACESHOTTER_API ASS_PlayerProjectile : public AActor
 	GENERATED_BODY()
 	
 public:	
-	// Sets default values for this actor's properties
 	ASS_PlayerProjectile();
+	// Sets default values for this actor's properties
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UCapsuleComponent* Capsule;
@@ -28,6 +28,11 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bullet")
 	float BulletSpeed = 600;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bullet")
+	FName WallTag = "Wall";
+
+	UFUNCTION()
+	void BeginOverlap(AActor* OverlappedActor, AActor* OtherActor);
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
