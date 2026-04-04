@@ -30,16 +30,10 @@ public:
 	//Variables
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ActorLogic")
-	float playerLife = 3;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ActorLogic")
 	bool bCanFire = true;
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category = "ActorLogic")
 	float FireDelay = 0.5f;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ActorLogic")
-	float DeathDelay = 2.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ActorLogic")
 	float MovementSpeed = 1.0f;
@@ -47,13 +41,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ActorLogic")
 	TSubclassOf<ASS_PlayerProjectile> ProjectileClass;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player")
-	FName BulletTag = "Bullet";
-
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
 
 	//InputAction
 	UPROPERTY(EditAnywhere, Category = "Input")
@@ -72,14 +62,8 @@ protected:
 	UFUNCTION()
 	void SetCanFireTrue();
 	
-	UFUNCTION()
-	void SetDeath();
-
 	FTimerHandle FireTimerHandle;
-	FTimerHandle DeathTimerHandle;
 
-	UFUNCTION()
-	void BeginOverlap(AActor* OverlappedActor, AActor* OtherActor);
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

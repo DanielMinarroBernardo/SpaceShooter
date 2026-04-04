@@ -28,18 +28,7 @@ ASS_PlayerShipCharacter::ASS_PlayerShipCharacter()
 void ASS_PlayerShipCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	OnActorBeginOverlap.AddUniqueDynamic(this, &ASS_PlayerShipCharacter::BeginOverlap);
-}
-
-void ASS_PlayerShipCharacter::BeginOverlap(AActor* OverlappedActor, AActor* OtherActor) {
-	if (OtherActor->ActorHasTag(BulletTag)) {
-		GEngine->AddOnScreenDebugMessage(-1, 1.0, FColor::Red, "PlayerGotHitByABullet");
-		OtherActor->Destroy();
-		playerLife = playerLife - 1;
-		if (playerLife == 0) {
-			GetWorldTimerManager().SetTimer(FireTimerHandle, this, &ASS_PlayerShipCharacter::SetDeath, DeathDelay, false);
-		}
-	}
+	
 }
 
 void ASS_PlayerShipCharacter::Move(const FInputActionValue& Value)
@@ -67,18 +56,13 @@ void ASS_PlayerShipCharacter::Shoot()
 
 		bCanFire = false;
 		//INIT TIMER
-		GetWorldTimerManager().SetTimer(DeathTimerHandle, this, &ASS_PlayerShipCharacter::SetCanFireTrue, FireDelay, false);
+		GetWorldTimerManager().SetTimer(FireTimerHandle, this, &ASS_PlayerShipCharacter::SetCanFireTrue, FireDelay, false);
 	}
 }
 
 void ASS_PlayerShipCharacter::SetCanFireTrue()
 {
 	bCanFire = true;
-}
-
-void ASS_PlayerShipCharacter::SetDeath()
-{
-	Destroy();
 }
 
 

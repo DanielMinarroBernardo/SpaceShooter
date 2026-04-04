@@ -19,15 +19,9 @@ ASS_PlayerProjectile::ASS_PlayerProjectile()
 }
 
 void ASS_PlayerProjectile::BeginOverlap(AActor* OverlappedActor,AActor*OtherActor){
-	if (OtherActor -> ActorHasTag(WallTag)) {
+	if (OtherActor - ActorHasTag(WallTag)) {
 		GEngine->AddOnScreenDebugMessage(-1, 1.0, FColor::Red, "Player Bullet Hitting a Wall");
 		Destroy();
-	}
-	if (OtherActor->ActorHasTag(PlayerTag)) {
-		GEngine->AddOnScreenDebugMessage(-1, 1.0, FColor::Red, "Player Bullet Hitting  a Bot");
-		OtherActor->Destroy();
-		Destroy();
-		
 	}
 }
 // Called when the game starts or when spawned

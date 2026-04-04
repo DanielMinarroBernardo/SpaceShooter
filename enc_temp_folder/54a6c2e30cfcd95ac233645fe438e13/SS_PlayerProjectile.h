@@ -30,9 +30,6 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bullet")
 	FName WallTag = "Wall";
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bullet")
-	FName PlayerTag = "Player";
 
 	UFUNCTION()
 	void BeginOverlap(AActor* OverlappedActor, AActor* OtherActor);
