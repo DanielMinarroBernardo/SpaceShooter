@@ -33,6 +33,9 @@ public:
 	float playerLife = 3;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ActorLogic")
+	float bulletDamage = 1;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ActorLogic")
 	bool bCanFire = true;
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category = "ActorLogic")

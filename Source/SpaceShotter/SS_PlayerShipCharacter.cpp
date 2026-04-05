@@ -62,7 +62,6 @@ void ASS_PlayerShipCharacter::Shoot()
 		//Spawn
 		FActorSpawnParameters SpawnParams;
 		SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
-		
 		GetWorld()->SpawnActor<AActor>(ProjectileClass, FirePoint->GetComponentTransform(), SpawnParams);
 
 		bCanFire = false;
