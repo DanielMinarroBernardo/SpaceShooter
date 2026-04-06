@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "PowerUp.h"
 #include "Spawner_PowerUps.generated.h"
 
 UCLASS()
@@ -16,18 +17,31 @@ public:
 	ASpawner_PowerUps();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	USceneComponent* FirePoint0;
+	USceneComponent* SpawnPoint0;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	USceneComponent* FirePoint1;
+	USceneComponent* SpawnPoint1;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	USceneComponent* FirePoint2;
+	USceneComponent* SpawnPoint2;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	USceneComponent* FirePoint3;
+	USceneComponent* SpawnPoint3;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ActorLogic")
+	TSubclassOf<APowerUp> PowerUpClass;
+	
+	UPROPERTY(BlueprintReadOnly, Category = "ActorLogic")
+	TArray<USceneComponent*> SpawnPoints;
+
+	FTimerHandle SpawnTimerHandle;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ActorLogic")
+	float SpawnDelay = 20.0f;
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	UFUNCTION()
+	void SpawnPowerUp();
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
