@@ -6,6 +6,7 @@
 #include "EnhancedInputComponent.h"
 #include "SS_PlayerProjectile.h"
 #include "InputAction.h"
+#include "Kismet/GameplayStatics.h"
 #include "InputActionValue.h"
 
 // Sets default values
@@ -38,6 +39,15 @@ void ASS_PlayerShipCharacter::BeginOverlap(AActor* OverlappedActor, AActor* Othe
 		playerLife = playerLife - 1;
 		if (playerLife == 0) {
 			GetWorldTimerManager().SetTimer(FireTimerHandle, this, &ASS_PlayerShipCharacter::SetDeath, DeathDelay, false);
+		}
+	}
+	if (OtherActor->ActorHasTag(PowerUpTag)) {
+		GEngine->AddOnScreenDebugMessage(-1, 1.0, FColor::Red, "PlayerTouchPowerUp");
+		OtherActor->Destroy();
+
+		if (FireDelay > MinFireDelay) {
+			FireDelay = FireDelay - FireDelaySubtract;
+			GEngine->AddOnScreenDebugMessage(-1, 1.0, FColor::Red, "FireDelayChange");
 		}
 	}
 }
@@ -77,7 +87,7 @@ void ASS_PlayerShipCharacter::SetCanFireTrue()
 
 void ASS_PlayerShipCharacter::SetDeath()
 {
-	Destroy();
+	UGameplayStatics::OpenLevel(this, LevelToOpen);
 }
 
 

@@ -23,7 +23,7 @@ void ASS_PlayerProjectile::BeginOverlap(AActor* OverlappedActor,AActor*OtherActo
 		GEngine->AddOnScreenDebugMessage(-1, 1.0, FColor::Red, "Player Bullet Hitting a Wall");
 		Destroy();
 	}
-	if (OtherActor->ActorHasTag(PlayerTag)) {
+	if (OtherActor->ActorHasTag(EnemyTag)) {
 		GEngine->AddOnScreenDebugMessage(-1, 1.0, FColor::Red, "Player Bullet Hitting  a Bot");
 		OtherActor->Destroy();
 		Destroy();

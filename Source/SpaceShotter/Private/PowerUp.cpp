@@ -16,12 +16,27 @@ APowerUp::APowerUp()
 	PowerUpMesh->SetupAttachment(Capsule);
 }
 
+
+
 // Called when the game starts or when spawned
 void APowerUp::BeginPlay()
 {
 	Super::BeginPlay();
 	GEngine->AddOnScreenDebugMessage(-1, 1.0, FColor::Red, "PowerUpSpawned");
 
+}
+
+void APowerUp::BeginOverlap(AActor* OverlappedActor, AActor* OtherActor)
+{
+	if (OtherActor->ActorHasTag(PlayerTag)) {
+		
+		GEngine->AddOnScreenDebugMessage(-1, 1.0, FColor::Red, "Overlaped with player");
+
+		if (ActualName == FireDelayName) {
+			ChangeFireDelay();
+		}
+
+	}
 }
 
 // Called every frame

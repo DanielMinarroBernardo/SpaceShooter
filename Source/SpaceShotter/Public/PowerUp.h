@@ -22,10 +22,26 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UCapsuleComponent* Capsule;	
 
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ActorLogic")
+	FName PlayerTag = "Player";
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ActorLogic")
+	FName FireDelayName = "FireDelay";
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ActorLogic")
+	FName ActualName;
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "ActorLogic")
+	void ChangeFireDelay();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+
+	UFUNCTION()
+	void BeginOverlap(AActor* OverlappedActor, AActor* OtherActor);
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

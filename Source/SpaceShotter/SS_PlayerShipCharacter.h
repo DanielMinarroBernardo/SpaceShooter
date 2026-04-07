@@ -39,7 +39,13 @@ public:
 	bool bCanFire = true;
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category = "ActorLogic")
-	float FireDelay = 0.5f;
+	float FireDelay = 1.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ActorLogic")
+	float MinFireDelay = 0.2f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ActorLogic")
+	float FireDelaySubtract = 0.2f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ActorLogic")
 	float DeathDelay = 2.0f;
@@ -52,6 +58,13 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player")
 	FName BulletTag = "Bullet";
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player")
+	FName PowerUpTag = "PowerUp";
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ActorLogic")
+	FName LevelToOpen = "Menu";
+	
 
 protected:
 	// Called when the game starts or when spawned
