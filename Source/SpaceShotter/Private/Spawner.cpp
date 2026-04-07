@@ -81,6 +81,13 @@ void ASpawner::SpawnEnemy()
 
 		GetWorldTimerManager().SetTimer(SpawnTimerHandle, this, &ASpawner::SpawnEnemy, SpawnDelay, false);
 
+		EnemySpawnCount++;
+
+		if (EnemySpawnCount == 7) {
+			SpawnDelay = SpawnDelay - 1;
+			EnemySpawnCount = 0;
+		}
+
 	}
 }
 
