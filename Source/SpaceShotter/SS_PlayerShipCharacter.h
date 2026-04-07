@@ -26,6 +26,12 @@ public:
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	USceneComponent* FirePoint;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	USceneComponent* FirePoint2;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	USceneComponent* FirePoint3;
+
 
 	//Variables
 
@@ -54,6 +60,9 @@ public:
 	float MovementSpeed = 1.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ActorLogic")
+	bool bCanFireMoreBullets = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ActorLogic")
 	TSubclassOf<ASS_PlayerProjectile> ProjectileClass;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player")
@@ -61,6 +70,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player")
 	FName PowerUpTag = "PowerUp";
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player")
+	FName MoreBulletTag = "MoreBullets";
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ActorLogic")
 	FName LevelToOpen = "Menu";

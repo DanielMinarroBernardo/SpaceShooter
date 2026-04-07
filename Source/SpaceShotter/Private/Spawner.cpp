@@ -43,7 +43,7 @@ void ASpawner::BeginPlay()
 		SpawnEnemy();
 	}
 	if (WhatDoISpawn == "PowerUp") {
-		SpawnPowerUp();
+		GetWorldTimerManager().SetTimer(SpawnTimerHandle, this, &ASpawner::SpawnPowerUp, SpawnDelay, false);
 	}
 }
 
@@ -60,7 +60,6 @@ void ASpawner::SpawnPowerUp()
 			SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 			GetWorld()->SpawnActor<APowerUp>(PowerUpClass, SpawnPointElegido->GetComponentTransform(), SpawnParams);
 		}
-
 		GetWorldTimerManager().SetTimer(SpawnTimerHandle, this, &ASpawner::SpawnPowerUp, SpawnDelay, false);
 
 	}
@@ -69,7 +68,20 @@ void ASpawner::SpawnEnemy()
 {
 	if (EnemyClass && !SpawnPoints.IsEmpty())
 	{
-		const int32 IndiceAleatorio = FMath::RandRange(0, SpawnPoints.Num() - 1);
+		
+		int32 IndiceAleatorio = FMath::RandRange(0, SpawnPoints.Num() - 1);
+
+		while (indexbefore == IndiceAleatorio)
+		{
+			IndiceAleatorio = FMath::RandRange(0, SpawnPoints.Num() - 1);
+			GEngine->AddOnScreenDebugMessage(-1, 1.0, FColor::Red,FString::FromInt(indexbefore));
+			GEngine->AddOnScreenDebugMessage(-1, 1.0, FColor::Red,FString::FromInt(IndiceAleatorio));
+		}
+		indexbefore = IndiceAleatorio;
+
+		GEngine->AddOnScreenDebugMessage(-1, 1.0, FColor::Green, FString::FromInt(IndiceAleatorio));
+		GEngine->AddOnScreenDebugMessage(-1, 1.0, FColor::Green, FString::FromInt(indexbefore));
+
 		USceneComponent* SpawnPointElegido = SpawnPoints[IndiceAleatorio];
 
 		if (SpawnPointElegido)
@@ -81,10 +93,13 @@ void ASpawner::SpawnEnemy()
 
 		GetWorldTimerManager().SetTimer(SpawnTimerHandle, this, &ASpawner::SpawnEnemy, SpawnDelay, false);
 
-		EnemySpawnCount++;
-
-		if (EnemySpawnCount == 7) {
-			SpawnDelay = SpawnDelay - 1;
+		EnemySpawnCount = EnemySpawnCount + 1;
+		
+		if (EnemySpawnCount == 5) {
+						
+			if (SpawnDelay > 1.0f) {
+				SpawnDelay = SpawnDelay - 0.5f;
+			}
 			EnemySpawnCount = 0;
 		}
 

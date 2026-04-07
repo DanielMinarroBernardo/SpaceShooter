@@ -21,6 +21,12 @@ ASS_PlayerShipCharacter::ASS_PlayerShipCharacter()
 	FirePoint = CreateDefaultSubobject<USceneComponent>((TEXT("FirePoint")));
 	FirePoint->SetupAttachment(RootComponent);
 
+	FirePoint2 = CreateDefaultSubobject<USceneComponent>((TEXT("FirePoint2")));
+	FirePoint2->SetupAttachment(FirePoint);
+
+	FirePoint3 = CreateDefaultSubobject<USceneComponent>((TEXT("FirePoint3")));
+	FirePoint3->SetupAttachment(FirePoint);
+
 	GetCapsuleComponent()->SetCapsuleHalfHeight(94.0f);
 	GetCapsuleComponent()->SetCapsuleRadius(94.0f);
 }
@@ -50,6 +56,12 @@ void ASS_PlayerShipCharacter::BeginOverlap(AActor* OverlappedActor, AActor* Othe
 			GEngine->AddOnScreenDebugMessage(-1, 1.0, FColor::Red, "FireDelayChange");
 		}
 	}
+	if (OtherActor->ActorHasTag(MoreBulletTag)) {
+		GEngine->AddOnScreenDebugMessage(-1, 1.0, FColor::Red, "PlayerTouchPowerUp");
+		OtherActor->Destroy();
+
+		bCanFireMoreBullets = true;
+	}
 }
 
 void ASS_PlayerShipCharacter::Move(const FInputActionValue& Value)
@@ -73,10 +85,17 @@ void ASS_PlayerShipCharacter::Shoot()
 		FActorSpawnParameters SpawnParams;
 		SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 		GetWorld()->SpawnActor<AActor>(ProjectileClass, FirePoint->GetComponentTransform(), SpawnParams);
-
 		bCanFire = false;
 		//INIT TIMER
 		GetWorldTimerManager().SetTimer(DeathTimerHandle, this, &ASS_PlayerShipCharacter::SetCanFireTrue, FireDelay, false);
+
+		if (bCanFireMoreBullets) {
+			//Spawn
+
+			GetWorld()->SpawnActor<AActor>(ProjectileClass, FirePoint2->GetComponentTransform(), SpawnParams);
+			GetWorld()->SpawnActor<AActor>(ProjectileClass, FirePoint3->GetComponentTransform(), SpawnParams);
+
+		}
 	}
 }
 

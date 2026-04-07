@@ -46,6 +46,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ActorLogic")
 	float SpawnDelay = 20.0f;
 
+	int32 indexbefore = 0;
+
 	int EnemySpawnCount = 0;
 protected:
 	// Called when the game starts or when spawned
