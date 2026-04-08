@@ -61,6 +61,7 @@ void ASS_PlayerShipCharacter::BeginOverlap(AActor* OverlappedActor, AActor* Othe
 		OtherActor->Destroy();
 
 		bCanFireMoreBullets = true;
+		GetWorldTimerManager().SetTimer(MoreBulletsHandle, this, &ASS_PlayerShipCharacter::SetMoreBullets, MoreBulletsDelay, false);
 	}
 }
 
@@ -107,6 +108,11 @@ void ASS_PlayerShipCharacter::SetCanFireTrue()
 void ASS_PlayerShipCharacter::SetDeath()
 {
 	UGameplayStatics::OpenLevel(this, LevelToOpen);
+}
+
+void ASS_PlayerShipCharacter::SetMoreBullets()
+{
+	bCanFireMoreBullets = false;
 }
 
 

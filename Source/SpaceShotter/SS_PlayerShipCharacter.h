@@ -57,6 +57,9 @@ public:
 	float DeathDelay = 2.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ActorLogic")
+	float MoreBulletsDelay = 3.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ActorLogic")
 	float MovementSpeed = 1.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ActorLogic")
@@ -103,8 +106,12 @@ protected:
 	UFUNCTION()
 	void SetDeath();
 
+	UFUNCTION()
+	void SetMoreBullets();
+
 	FTimerHandle FireTimerHandle;
 	FTimerHandle DeathTimerHandle;
+	FTimerHandle MoreBulletsHandle;
 
 	UFUNCTION()
 	void BeginOverlap(AActor* OverlappedActor, AActor* OtherActor);
